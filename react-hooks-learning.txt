@@ -1,0 +1,53 @@
+
+
+USESTATE
+
+import { useState } from "react";
+
+useState is used to change the state of a variable.
+const [search, setSearch] = useState("");
+
+The first parameter of the destructured array is the variable, the second parameter is a callback function which receives a new value
+to the variable. The parameter that useState() receives is the default value for the variable.
+
+//
+
+USEEFFECT
+
+import { useEffect } from "react";
+
+useEffect is used to load the page with something whenever the webpage is refreshed. 
+useEffect(()=>{
+
+//code
+
+}, [])
+
+The first parameter in useEffect() is a callback function that is effectively performed when the page is loaded for the first time.
+However, you can change the condition in which this callback is called. For instance, when you fill up the empty array in the second
+parameter of the useEffect with a variable, whenever this variable is altered the callback is called.
+
+useEffect(()=>{
+
+//code
+
+}, [search])
+
+In this scenario, when the state of the search is updated, the code inside the useEffect is executed.
+
+//
+
+USEPARAMS
+
+import { useParams } from "react-router-dom";
+
+When you are working with dynamic routing, you will probably face a situation in which there is a URL param that you wanna know
+so as to perform accordingly.
+
+Example: /api/v1/posts/:id this route was implemented in your react application.
+
+You should know the id in order to render the respective information from the API.
+
+What you can do is: const { id } = useParams();
+
+So, now you have the id, and you can use it.

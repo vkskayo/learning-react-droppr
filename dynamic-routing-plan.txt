@@ -1,0 +1,30 @@
+I've created a api server with all the routes that i am going to use in this application. However, I was struggling handling the specific
+requested data from the game. For instance, I click on the image of the game with id 9, the plan is ideally retrieve from the api
+the respective information for the specified id of the game. Turned out that using dynamic routing in the backend is the best solution.
+So the plan is to create dynamic routing in the api.js file using - /url/:variable - this way will be possible to retrieve dynamic data.
+
+Example: 
+
+In api.js file, there will be this route:
+
+app.get("/api/cover/:id", (req, res) => {
+  axios({
+
+    // I'll use the - where id=${req.params.id} to retrieve only the necessary information.
+});
+
+On my react app there will be a component linking the id of the game to the route. myKey is the id of the game.
+
+    <Link className="nav-link" to={`screen/${myKey}`}>
+        <img src={background_image} className="img-fluid" alt="..." />
+      </Link>
+
+So when I click on the image my application will hit the route - screen/id -.
+
+
+Afterwards, my Route created to render the screen will read the id from the requested page(I'll use useParams hook for it).
+Once I have the backend settled properly, the screen route will fetch the data from my api server.
+
+fetch(`http://localhost:3001/api/cover/${useParams()}`)
+
+Remember this fetch will work, because on my backend we used - where id=req.params.id which is our defined id.
