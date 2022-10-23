@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
 function games({ background_image, myKey }) {
+  const url = "https:" + background_image.replace("t_thumb", "t_cover_big");
+
+  const imgStyle = {
+    width: 180,
+    height: 240,
+  };
   return (
     /*     <div className="card bg-dark text-white m-5">
       <img src={background_image} className="card-img" alt="game-image" />
@@ -15,7 +21,7 @@ function games({ background_image, myKey }) {
     </div> */
     <div className="col-md-4 mx-auto m-y-4 my-5">
       <Link className="nav-link" to={`screen/${myKey}`}>
-        <img src={background_image} className="img-fluid" alt="..." />
+        <img style={imgStyle} src={url} className="img-fluid" alt="..." />
       </Link>
     </div>
   );

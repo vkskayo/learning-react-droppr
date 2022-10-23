@@ -8,25 +8,25 @@ export default function Game() {
   const [title, setTitle] = useState([]);
   const [creator, setCreator] = useState([]);
   const [date, setDate] = useState([]);
-  console.log(useParams());
+  const id = useParams().id;
   useEffect(() => {
-    fetch(`http://localhost:3001/api/cover`)
+    fetch(`http://localhost:3001/api/cover/${id}`)
       .then((res) => res.json())
-      .then((data) => setCover(data.data[Math.floor(Math.random() * 10)].url));
+      .then((data) => {
+        setCover(data.data[0].url);
+      });
 
-    fetch("http://localhost:3001/api/title")
+    fetch(`http://localhost:3001/api/title/${id}`)
       .then((res) => res.json())
-      .then((data) => setTitle(data.data[Math.floor(Math.random() * 10)].name));
+      .then((data) => setTitle(data.data[0].name));
 
-    fetch("http://localhost:3001/api/creator")
+    fetch(`http://localhost:3001/api/creator/${id}`)
       .then((res) => res.json())
-      .then((data) =>
-        setCreator(data.data[Math.floor(Math.random() * 10)].name)
-      );
+      .then((data) => setCreator(data.data[0].name));
 
-    fetch("http://localhost:3001/api/date")
+    fetch(`http://localhost:3001/api/date/${id}`)
       .then((res) => res.json())
-      .then((data) => setDate(data.data[Math.floor(Math.random() * 10)].human));
+      .then((data) => setDate(data.data[0].human));
   }, []);
 
   return (
