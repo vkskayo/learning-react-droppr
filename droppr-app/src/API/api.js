@@ -32,6 +32,8 @@ app.listen(3001, () => {
   console.log("server running 3001");
 });
 
+// Given the game id, this endpoint returns the release date of the game
+
 app.get("/api/date/:id", (req, res) => {
   axios({
     url: "https://api.igdb.com/v4/release_dates",
@@ -41,7 +43,7 @@ app.get("/api/date/:id", (req, res) => {
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
       Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
     },
-    data: `fields human; where id=${req.params.id};`,
+    data: `fields human; where game=${req.params.id};`,
   })
     .then((response) => {
       console.log(response.data);
@@ -53,9 +55,36 @@ app.get("/api/date/:id", (req, res) => {
     });
 });
 
+// I HAVE TO FIX IT YET
+// Given the game id, the api should have returned the developer. However I am having problems handling the array of games developed.
+// I don't know how to make a condition to check if the array of games developed contains the id of the given game id
+
 app.get("/api/creator/:id", (req, res) => {
   axios({
     url: "https://api.igdb.com/v4/companies",
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
+      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+    },
+    data: `fields name; where developed=${req.params.id};`,
+  })
+    .then((response) => {
+      console.log(response.data);
+      res.json({ data: response.data });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.send("Error");
+    });
+});
+
+//Given the game id, the api returns the title of the game.
+
+app.get("/api/title/:id", (req, res) => {
+  axios({
+    url: "https://api.igdb.com/v4/games",
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -74,26 +103,7 @@ app.get("/api/creator/:id", (req, res) => {
     });
 });
 
-app.get("/api/title/:id", (req, res) => {
-  axios({
-    url: "https://api.igdb.com/v4/games",
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
-    },
-    data: `fields name; where cover=${req.params.id};`,
-  })
-    .then((response) => {
-      console.log(response.data);
-      res.json({ data: response.data });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.send("Error");
-    });
-});
+//Given the game id, the api returns the cover/image of the game
 
 app.get("/api/cover/:id", (req, res) => {
   axios({
@@ -104,7 +114,7 @@ app.get("/api/cover/:id", (req, res) => {
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
       Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
     },
-    data: `fields url; where id=${req.params.id};`,
+    data: `fields url; where game=${req.params.id};`,
   })
     .then((response) => {
       console.log(response.data);
@@ -127,7 +137,7 @@ app.get("/api/list/:id", (req, res) => {
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
       Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
     },
-    data: `fields url; limit 15; offset ${req.params.id * 15};`,
+    data: `fields url, game; limit 15; offset ${req.params.id * 15};`,
   })
     .then((response) => {
       console.log(response.data);
@@ -138,88 +148,3 @@ app.get("/api/list/:id", (req, res) => {
       res.send("Error");
     });
 });
-
-/* app.get("/api/cover", (req, res) => {
-  axios({
-    url: "https://api.igdb.com/v4/covers",
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
-    },
-    data: `fields alpha_channel,animated,checksum,game,height,image_id,url,width; where id=110592;`,
-  })
-    .then((response) => {
-      console.log(response.data);
-      res.json({ data: response.data });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.send("Error");
-    });
-});
-
-app.get("/api/title", (req, res) => {
-  axios({
-    url: "https://api.igdb.com/v4/games",
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
-    },
-    data: `fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_modes,genres,hypes,involved_companies,keywords,language_supports,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites; where cover=110592;`,
-  })
-    .then((response) => {
-      console.log(response.data);
-      res.json({ data: response.data });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.send("Error");
-    });
-});
-
-app.get("/api/creator", (req, res) => {
-  axios({
-    url: "https://api.igdb.com/v4/companies",
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
-    },
-    data: `fields change_date,change_date_category,changed_company_id,checksum,country,created_at,description,developed,logo,name,parent,published,slug,start_date,start_date_category,updated_at,url,websites; where id=500;`,
-  })
-    .then((response) => {
-      console.log(response.data);
-      res.json({ data: response.data });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.send("Error");
-    });
-});
-
-app.get("/api/date", (req, res) => {
-  axios({
-    url: "https://api.igdb.com/v4/release_dates",
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
-    },
-    data: `fields category,checksum,created_at,date,game,human,m,platform,region,updated_at,y; where id=500;`,
-  })
-    .then((response) => {
-      console.log(response.data);
-      res.json({ data: response.data });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.send("Error");
-    });
-});
- */

@@ -21,7 +21,7 @@ export default function App() {
       <Header />
       <ul>
         {gamesList.map((e) => {
-          return <Game key={e.id} myKey={e.id} background_image={e.url} />;
+          return <Game key={e.game} myKey={e.game} background_image={e.url} />;
         })}
       </ul>
       <div className="col-4 mx-auto">
