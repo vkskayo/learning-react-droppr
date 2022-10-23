@@ -12,7 +12,7 @@ function header() {
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container-fluid">
-        <div>
+        <div className="mx-4">
           <Link className="navbar-brand" to="/">
             Droppr
             <br />
@@ -25,7 +25,7 @@ function header() {
           ></i>
         </div>
 
-        <form className="d-flex" role="search">
+        <form className="d-flex mx-4" role="search">
           <input
             onChange={(e) => {
               setSearch(e.target.value);
@@ -40,7 +40,7 @@ function header() {
           </button>
         </form>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler mx-4 mt-2"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavAltMarkup"
@@ -51,7 +51,7 @@ function header() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav mt-2">
+          <div className="navbar-nav mt-2 mx-4">
             <Link className="nav-link" to="/profile">
               Profile
             </Link>

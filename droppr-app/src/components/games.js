@@ -19,10 +19,14 @@ function games({ background_image, myKey }) {
         <p className="card-text">Last updated 3 mins ago</p>
       </div>
     </div> */
-    <div className="col-md-4 mx-auto m-y-4 my-5">
+    <div className="d-flex col-md-4 my-5">
       <Link className="nav-link" to={`screen/${myKey}`}>
         <img style={imgStyle} src={url} className="img-fluid" alt="..." />
       </Link>
+      <div>
+        <h1 className="text-light">Nauro</h1>
+        <h5 className="text-primary">Nintendo / IOS</h5>
+      </div>
     </div>
   );
 }
