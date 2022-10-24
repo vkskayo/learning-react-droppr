@@ -8,6 +8,8 @@ export default function Game() {
   const [title, setTitle] = useState([]);
   const [creator, setCreator] = useState([]);
   const [date, setDate] = useState([]);
+  const [description, setDescription] = useState("");
+
   const id = useParams().id;
   useEffect(() => {
     fetch(`http://localhost:3001/api/cover/${id}`)
@@ -16,9 +18,12 @@ export default function Game() {
         setCover(data.data[0].url);
       });
 
-    fetch(`http://localhost:3001/api/title/${id}`)
+    fetch(`http://localhost:3001/api/general/${id}`)
       .then((res) => res.json())
-      .then((data) => setTitle(data.data[0].name));
+      .then((data) => {
+        setTitle(data.data[0].name);
+        setDescription(data.data[0].summary);
+      });
 
     fetch(`http://localhost:3001/api/creator/${id}`)
       .then((res) => res.json())
@@ -37,6 +42,7 @@ export default function Game() {
         myDate={date}
         myCreator={creator}
         myTitle={title}
+        myDescription={description}
       />
     </>
   );

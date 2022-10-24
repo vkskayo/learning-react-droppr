@@ -1,18 +1,16 @@
 import Header from "./components/header";
 import Game from "./components/games";
-import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 export default function App() {
   const [gamesList, setGamesList] = useState([]);
   const [page, setPage] = useState(0);
 
-  console.log(gamesList);
-
   useEffect(() => {
     fetch(`http://localhost:3001/api/list/${page}`).then((res) =>
-      res.json().then((data) => setGamesList(data.data))
+      res.json().then((data) => {
+        setGamesList(data.data);
+      })
     );
   }, [page]);
 
@@ -21,7 +19,17 @@ export default function App() {
       <Header />
       <ul>
         {gamesList.map((e) => {
-          return <Game key={e.game} myKey={e.game} background_image={e.url} />;
+          return (
+            <Game
+              key={e.id}
+              myKey={e.id}
+              background_image={e.cover}
+              title={e.name}
+              category={e.category}
+              genres={e.genres}
+              platforms={e.platforms}
+            />
+          );
         })}
       </ul>
       <div className="col-4 mx-auto">

@@ -5,26 +5,6 @@ const http = require("http");
 const cors = require("cors");
 app.use(cors());
 
-/* const options = {
-  method: "GET",
-  url: "https://rawg-video-games-database.p.rapidapi.com/games/4201?key=f56abcce0fb44e88a7d084091f361c9f",
-  headers: {
-    "X-RapidAPI-Key": "503575b6d8mshdbe55bf70ab54cbp16f540jsnc3451a92eb53",
-    "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com",
-  },
-}; */
-
-/* axios
-  .request(options)
-  .then(function (response) {
-    response.data.results.forEach((element) => {
-      console.log(element.background_image);
-    });
-  })
-  .catch(function (error) {
-    console.error(error);
-  }); */
-
 app.set("port", 3001);
 const server = http.createServer(app);
 
@@ -46,7 +26,6 @@ app.get("/api/date/:id", (req, res) => {
     data: `fields human; where game=${req.params.id};`,
   })
     .then((response) => {
-      console.log(response.data);
       res.json({ data: response.data });
     })
     .catch((err) => {
@@ -71,7 +50,6 @@ app.get("/api/creator/:id", (req, res) => {
     data: `fields name; where developed=${req.params.id};`,
   })
     .then((response) => {
-      console.log(response.data);
       res.json({ data: response.data });
     })
     .catch((err) => {
@@ -80,9 +58,9 @@ app.get("/api/creator/:id", (req, res) => {
     });
 });
 
-//Given the game id, the api returns the title of the game.
+//Given the game id, the api returns the title, the description, which platforms are avaiable, the genres and category of the game.
 
-app.get("/api/title/:id", (req, res) => {
+app.get("/api/general/:id", (req, res) => {
   axios({
     url: "https://api.igdb.com/v4/games",
     method: "POST",
@@ -91,10 +69,9 @@ app.get("/api/title/:id", (req, res) => {
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
       Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
     },
-    data: `fields name; where id=${req.params.id};`,
+    data: `fields name, summary, platforms, genres, category; where id=${req.params.id};`,
   })
     .then((response) => {
-      console.log(response.data);
       res.json({ data: response.data });
     })
     .catch((err) => {
@@ -117,7 +94,26 @@ app.get("/api/cover/:id", (req, res) => {
     data: `fields url; where game=${req.params.id};`,
   })
     .then((response) => {
-      console.log(response.data);
+      res.json({ data: response.data });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.send("Error");
+    });
+});
+
+app.get("/api/capa/:id", (req, res) => {
+  axios({
+    url: "https://api.igdb.com/v4/covers",
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
+      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+    },
+    data: `fields url; where id=${req.params.id};`,
+  })
+    .then((response) => {
       res.json({ data: response.data });
     })
     .catch((err) => {
@@ -130,17 +126,18 @@ app.get("/api/cover/:id", (req, res) => {
 
 app.get("/api/list/:id", (req, res) => {
   axios({
-    url: "https://api.igdb.com/v4/covers",
+    url: "https://api.igdb.com/v4/games",
     method: "POST",
     headers: {
       Accept: "application/json",
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
       Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
     },
-    data: `fields url, game; limit 15; offset ${req.params.id * 15};`,
+    data: `fields name, summary, platforms, genres, category, cover; limit 15; offset ${
+      req.params.id * 15
+    };`,
   })
     .then((response) => {
-      console.log(response.data);
       res.json({ data: response.data });
     })
     .catch((err) => {

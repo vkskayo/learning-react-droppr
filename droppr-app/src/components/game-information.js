@@ -1,4 +1,10 @@
-function game_information({ myCover, myDate, myCreator, myTitle }) {
+function game_information({
+  myCover,
+  myDate,
+  myCreator,
+  myTitle,
+  myDescription,
+}) {
   const url = myCover.replace("t_thumb", "t_cover_big");
 
   const imgStyle = {
@@ -21,12 +27,7 @@ function game_information({ myCover, myDate, myCreator, myTitle }) {
         </div>
       </div>
       <div className="row">
-        <p className="text-light">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-          faucibus viverra est quis porta. Interdum et malesuada fames ac ante
-          ipsum primis in faucibus. Aenean quam risus, imperdiet non interdum
-          sit amet, ullamcorper ac lorem. Quisque facilisis eros nec orci
-        </p>
+        <p className="text-light">{myDescription}</p>
       </div>
     </div>
   );
