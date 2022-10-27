@@ -1,0 +1,53 @@
+So far, I've created a site using react.js, javascript, css, node.js, express.js, axios, cors and bootstrap 5.
+
+
+Helper components:
+
+For the front-end I divided the components in index.js(The main component, in which all routes and paths are defined),
+app.js(The kind of homepage of my site, there is a hub showing games with pagination), card-review.js(A component dedicated to the reviews 
+that will be implemented yet as a CRUD functionality. The idea is that users will be able to write and rate all avaiable games in
+ the application ), game-information.js(A component created to structure and display the individual page of each game. So when a user
+ clicks on a game, this component containing some informations of the game will be rendered), games.js(A component created to
+ display the game in columns. The homepage and the screen for the search results use this component to show all the games properly) and 
+ header.js(A component which enables the search functionality as well as navigation throughout the site).
+
+Page components:
+
+For the sake of organization and conventional good practices. I've used components with jsx which in essence is the same thing, a component.
+However, in this folder all jsx files are actually full pages or routes of the site. They are: friends.jsx(A component dedicated to show
+all user's friends. It wasn't implemented yet), lists.jsx(A component dedicated to the user's lists of games. In this page users will be able
+to create lists, update lists, remove lists and consult lists of games), profile.jsx(A component created to show user's information like
+profile picture, description, username etc), reviews.jsx(A component created to show all user's reviews of games), screen.jsx(A component 
+created to render the individual page of each game) and search.js(A component created to display the screen for the search results,
+So whenever a user searchs for a "x" game, this component will render with all the results for the "x" string).
+
+For the backend, I've created a json server using node.js and express.js. This server get information from the IGDB api and sends the information
+to the local server. All request for IGDB are structured in endpoints which are fetched in some components.
+
+To do:
+
+Search functionality(header.js) : status - uncompleted
+I can't search using Enter in the input.
+
+Friends screen : status - It wasn't even started
+
+Lists screen   : status - It wasn't even started
+
+Lists CRUD     : status - It wasn't even started
+
+Profile screen : status -  It wasn't even started
+
+Reviews screen : status - uncompleted
+There is still to be done some styling and ideas to flourish(I don't know very well what to do. In need of deliberation)
+
+Reviews CRUD : status -  It wasn't even started
+
+Screen screen : status - uncompleted
+Missing the buttons for review and rating. The information about who've created the game is missing.
+
+Search screen : status - uncompleted
+The category, platforms and genres are missing in the search screen. Maybe there will be a implementation for ordering the games.
+
+
+
+

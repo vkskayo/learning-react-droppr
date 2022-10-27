@@ -39,7 +39,7 @@ function games({
     <div className="d-flex col-12 my-5 flex-column-reverse justify-content flex-md-row">
       <Link
         className="position-relative inline-block mx-md-4"
-        to={`screen/${myKey}`}
+        to={`/screen/${myKey}`}
       >
         <img
           style={imgStyle}

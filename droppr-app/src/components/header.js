@@ -35,13 +35,18 @@ function header({ childToParent }) {
             aria-label="Search"
           />
 
-          <button
-            onClick={() => childToParent(search)}
-            className="btn btn-outline-light"
-            type="button"
+          <Link
+            className="position-relative inline-block mx-md-4"
+            to={`/search/${search}`}
           >
-            Search
-          </button>
+            <button
+              onClick={() => childToParent(search)}
+              className="btn btn-outline-light"
+              type="button"
+            >
+              Search
+            </button>
+          </Link>
         </form>
         <button
           className="navbar-toggler mx-4 mt-2"
