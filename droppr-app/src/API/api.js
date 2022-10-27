@@ -80,7 +80,7 @@ app.get("/api/general/:id", (req, res) => {
     });
 });
 
-//Given the game id, the api returns the cover/image of the game
+//Given the game id, the api returns the cover url of the game
 
 app.get("/api/cover/:id", (req, res) => {
   axios({
@@ -102,6 +102,7 @@ app.get("/api/cover/:id", (req, res) => {
     });
 });
 
+// Given the cover id, this return the cover url of the game
 app.get("/api/capa/:id", (req, res) => {
   axios({
     url: "https://api.igdb.com/v4/covers",
@@ -134,6 +135,28 @@ app.get("/api/list/:id", (req, res) => {
       Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
     },
     data: `fields name, summary, platforms, genres, category, cover; limit 15; offset ${
+      req.params.id * 15
+    };`,
+  })
+    .then((response) => {
+      res.json({ data: response.data });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.send("Error");
+    });
+});
+
+app.get("/api/query/:name/:id", (req, res) => {
+  axios({
+    url: "https://api.igdb.com/v4/games",
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
+      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+    },
+    data: `search "${req.params.name}"; fields name,cover; limit 50; offset ${
       req.params.id * 15
     };`,
   })

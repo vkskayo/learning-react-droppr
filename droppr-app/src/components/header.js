@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
-function header() {
+function header({ childToParent }) {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -9,7 +9,7 @@ function header() {
   }, [search]);
 
   return (
-    <nav className="navbar navbar-dark bg-dark">
+    <nav className="navbar navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
         <div className="mx-4">
           <Link className="navbar-brand" to="/">
@@ -34,7 +34,12 @@ function header() {
             placeholder="Search"
             aria-label="Search"
           />
-          <button className="btn btn-outline-light" type="button">
+
+          <button
+            onClick={() => childToParent(search)}
+            className="btn btn-outline-light"
+            type="button"
+          >
             Search
           </button>
         </form>

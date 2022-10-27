@@ -7,6 +7,7 @@ import Reviews from "./routes/reviews";
 import Lists from "./routes/lists";
 import Screen from "./routes/screen";
 import React from "react";
+import Search from "./routes/search";
 
 const rootElement = document.getElementById("root");
 render(
@@ -18,6 +19,7 @@ render(
       <Route path="reviews" element={<Reviews />} />
       <Route path="lists" element={<Lists />} />
       <Route path="screen/:id" element={<Screen />} />
+      <Route path="search/:name" element={<Search />} />
     </Routes>
   </BrowserRouter>,
   rootElement

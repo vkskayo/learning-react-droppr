@@ -9,7 +9,6 @@ function games({
   genres,
   platforms,
 }) {
-  // const url = "https:" + background_image.replace("t_thumb", "t_cover_big");
   const url =
     "https://images.igdb.com/igdb/image/upload/t_cover_big/dq7tvq2dub1xj0jnqafe.jpg";
   const imgStyle = {
@@ -18,6 +17,7 @@ function games({
   };
 
   const [cover, setCover] = useState("");
+  const [genress, setGenres] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:3001/api/capa/${background_image}`)
@@ -29,16 +29,11 @@ function games({
         })
       )
       .catch((err) => {
-        // console.error(err);
         setCover(
           "https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png"
         );
       });
   }, []);
-
-  console.log(`background: ${background_image}`);
-  console.log(`gameId: ${myKey}`);
-  console.log(`title: ${title}\n\n`);
 
   return (
     <div className="d-flex col-12 my-5 flex-column-reverse justify-content flex-md-row">
