@@ -4,10 +4,6 @@ import React, { useState, useEffect } from "react";
 function header({ childToParent }) {
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    console.log(search);
-  }, [search]);
-
   return (
     <nav className="navbar navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
