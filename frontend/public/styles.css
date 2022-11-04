@@ -4,8 +4,13 @@ body {
   padding-top: 50px;
 }
 
+.hover-effect:hover {
+  border: solid 2px lightblue;
+  transform: scale(1.1);
+}
+
 @media (max-width: 608px) {
   body {
-    padding-top: 120px;
+    padding-top: 40px;
   }
 }

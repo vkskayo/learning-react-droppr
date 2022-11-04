@@ -1,10 +1,12 @@
 import Header from "../components/header";
+import ScreenL from "../components/screenLucas";
+import "./screen.css";
 
 export default function Screen() {
   return (
     <>
       <Header />
-      <h1 className="text-light">Screen</h1>
+      <ScreenL />
     </>
   );
 }

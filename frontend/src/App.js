@@ -1,10 +1,13 @@
 import Header from "./components/header";
+import Game from "./components/homeGame";
 
 export default function App() {
   return (
     <>
       <Header />
-      <h1 className="text-light">HomePage</h1>
+      <Game />
+      <Game />
+      <Game />
     </>
   );
 }

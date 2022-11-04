@@ -1,0 +1,1 @@
+Este arquivo apresentará informações relevantes do backend para todos os desenvolvedores do projeto:
