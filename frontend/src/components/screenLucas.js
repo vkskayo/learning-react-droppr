@@ -1,4 +1,7 @@
 function screenLucas() {
+  
+  const stars  = Array(5).fill(0);
+  
   return (
     <>
       <section id="Game-Content">
@@ -60,7 +63,7 @@ function screenLucas() {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title text-dark" id="exampleModalLabel">
-                New message
+                Give it your Drop!
               </h5>
               <button
                 type="button"
@@ -71,17 +74,60 @@ function screenLucas() {
             </div>
             <div class="modal-body">
               <form>
-                <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label text-dark">
-                    Game Phrase:
-                  </label>
-                  <input type="text" class="form-control" id="recipient-name" />
-                </div>
+                
+                <input type="radio" name="star" class="star"/>
+                <input type="radio" name="star" class="star"/>
+                <input type="radio" name="star" class="star"/>
+                <input type="radio" name="star" class="star"/>
+                <input type="radio" name="star" class="star"/>
+                <input type="radio" name="star" class="star"/>
+                <input type="radio" name="star" class="star"/>
+                <input type="radio" name="star" class="star"/>
+                <input type="radio" name="star" class="star"/>
+                <input type="radio" name="star" class="star"/>
+
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label text-dark">
-                    Review:
+                    Drop:
                   </label>
                   <textarea class="form-control" id="message-text"></textarea>
+
+                </div>
+                <div class="mb-3">
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton1"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Status
+                    </button>
+
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton1"
+                    >
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          Playing
+                        </a>
+                      </li>
+
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          Finished
+                        </a>
+                      </li>
+
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          All achievements
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </form>
             </div>
