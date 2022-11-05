@@ -1,10 +1,13 @@
 import Header from "../components/header";
+import UserPhoto from "../components/userphoto";
 
 export default function Friends() {
   return (
     <>
       <Header />
-      <h1 className="text-light">Friends</h1>
+      <UserPhoto />
+      <UserPhoto />
+      <UserPhoto />
     </>
   );
 }

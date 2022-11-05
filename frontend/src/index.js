@@ -7,6 +7,7 @@ import Friends from "./routes/friends";
 import Reviews from "./routes/reviews";
 import Lists from "./routes/lists";
 import Screen from "./routes/screen";
+import Settings from "./routes/usersettings";
 
 const rootElement = document.getElementById("root");
 render(
@@ -18,6 +19,7 @@ render(
       <Route path="reviews" element={<Reviews />} />
       <Route path="lists" element={<Lists />} />
       <Route path="screen/:id" element={<Screen />} />
+      <Route path="/profile/settings" element={<Settings />} />
     </Routes>
   </BrowserRouter>,
   rootElement

@@ -20,6 +20,12 @@ https://nodejs.org/en/
 No projeto, está sendo utilizado o bootstrap 5 via cdn. O cdn está no arquivo index.html localizado em frontend/public/index.html
 Documentação bootstrap5 - https://getbootstrap.com/docs/5.0/getting-started/introduction/
 
+Além do bootstrap 5, está sendo utilizado uma biblioteca de icons para a UI chamada fontawesome, também em cdn e localizado no mesmo e único
+arquivo html do projeto.
+Documentação/Site fontawesome - https://fontawesome.com/search
+Para utilizar o fontawesome, basta colocar as tags icons provisionadas no projeto.
+Ex: <i class="fa-solid fa-heart"></i> - Esta tag é dada pelo fontawesome e simplesmente renderiza um ícone de um coração.
+
 //
 
 Lista de dependências instaladas até agora -
