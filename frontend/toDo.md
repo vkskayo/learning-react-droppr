@@ -1,0 +1,12 @@
+- [x] Implementação inicial de React
+- [x] Implementação do React-Router-Dom
+- [x] Componentização da tela de exibição de jogos
+- [x] Componentização da tela de exibição das listas
+- [x] Componentização da tela individual de jogo
+- [] Componentização da tela de perfil
+- [] Componentização da tela de amigos
+- [] Componentização da tela de avaliações
+- [] Componentização da tela de criação de lista
+- [] Componentização da tela de edição de lista
+- [] Modal de avaliação
+- [] Modal de confirmação de deletamento de lista
