@@ -97,6 +97,8 @@ p {
 }
 
 hr {
+  margin-top: 15vh;
+  margin-bottom: 10vh;
   border: solid #779ecb;
 }
 

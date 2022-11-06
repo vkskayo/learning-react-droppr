@@ -162,7 +162,6 @@ function screenLucas() {
             </div>
           </div>
         </div>
-        <hr></hr>
       </div>
     </>
   );
