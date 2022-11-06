@@ -2,12 +2,16 @@ import image from "../images/userpicture.png";
 
 export default function userPhoto() {
   return (
-    <div className="col-3 d-flex flex-column mx-auto mx-lg-5 my-5 align-items-center justify-content-center">
-      <div className="d-flex align-items-center gap-3">
-        <img className="rounded-circle" src={image} />
-        <h2 className="d-none d-sm-inline">Username</h2>
+    <>
+      <div>
+        <div className="col-4 d-flex flex-column mx-2">
+          <div className="d-flex align-items-center gap-3 col-12 col-lg-5">
+            <img className="rounded-circle w-50" src={image} />
+            <h4 className="fs-5 fs-md-4">Username</h4>
+          </div>
+        </div>
+        <div className="col-12 mx-auto border-bottom border-secondary d-flex gap-4 my-3"></div>
       </div>
-      <h2 className="d-sm-none text-light">Username</h2>
-    </div>
+    </>
   );
 }

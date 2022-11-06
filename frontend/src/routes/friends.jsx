@@ -5,9 +5,11 @@ export default function Friends() {
   return (
     <>
       <Header />
-      <UserPhoto />
-      <UserPhoto />
-      <UserPhoto />
+      <div className="d-flex flex-column my-5">
+        <UserPhoto />
+        <UserPhoto />
+        <UserPhoto />
+      </div>
     </>
   );
 }
