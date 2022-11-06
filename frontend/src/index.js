@@ -8,6 +8,8 @@ import Reviews from "./routes/reviews";
 import Lists from "./routes/lists";
 import Screen from "./routes/screen";
 import Settings from "./routes/usersettings";
+import Favorites from "./routes/favorites";
+import Popular from "./routes/popular";
 
 const rootElement = document.getElementById("root");
 render(
@@ -20,6 +22,8 @@ render(
       <Route path="lists" element={<Lists />} />
       <Route path="screen/:id" element={<Screen />} />
       <Route path="/profile/settings" element={<Settings />} />
+      <Route path="/reviews/popular" element={<Popular />} />
+      <Route path="/reviews/favorites" element={<Favorites />} />
     </Routes>
   </BrowserRouter>,
   rootElement

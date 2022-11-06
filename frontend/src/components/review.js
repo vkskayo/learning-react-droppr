@@ -1,4 +1,9 @@
-export default function review() {
+export default function review({ numOfstars }) {
+  let stars = [];
+  for (let i = 0; i < numOfstars; i++) {
+    stars.push(<i class="fa-solid fa-star text-warning"></i>);
+  }
+
   return (
     <div className="d-flex flex-column gap-2 mx-3 mx-md-5 my-5">
       <div className="d-flex gap-3">
@@ -10,11 +15,9 @@ export default function review() {
           </div>
           <div className="d-flex gap-2">
             <div className="">
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
-              <i class="fa-solid fa-star text-warning"></i>
+              {stars.map((e) => {
+                return e;
+              })}
             </div>
             <p className="text-secondary d-none d-md-inline">
               Uploaded 22 may 2020

@@ -1,12 +1,15 @@
-- [x] Implementação inicial de React
-- [x] Implementação do React-Router-Dom
-- [x] Componentização da tela de exibição de jogos
-- [x] Componentização da tela de exibição das listas
-- [x] Componentização da tela individual de jogo
-- [] Componentização da tela de perfil
-- [] Componentização da tela de amigos
-- [] Componentização da tela de avaliações
-- [] Componentização da tela de criação de lista
-- [] Componentização da tela de edição de lista
+- [x] Implementação inicial de React -- npx create-react-app Droppr-7
+- [x] Implementação do React-Router-Dom -- npm install react-router-dom@6
+- [x] Componentização da tela de exibição de jogos -- componentes: homeGame.js e App.js
+- [x] Componentização da tela de exibição das listas -- componentes: list.js, noLists.js e lists.jsx
+- [x] Componentização da tela individual de jogo -- componentes: screenLucas.js e screen.jsx
+- [] Componentização da tela de perfil do próprio usuário -- componentes: profile.jsx
+- [] Componentização da tela de perfil de outro usuário -- componentes: A criar ainda...
+- [] Componentização da tela de edição de perfil componentes: usersettings.jsx
+- [] Componentização da tela de amigos componentes: userPhoto.js e friends.jsx
+- [] Componentização da tela de avaliações componentes: review.js e reviews.jsx
+- [] Componentização da tela de criação de lista componentes: A criar ainda...
+- [] Componentização da tela de edição de lista componentes: A criar ainda...
+- [] Componentização da tela de exibição dos jogos de uma específica lista componentes: A criar ainda...
 - [] Modal de avaliação
 - [] Modal de confirmação de deletamento de lista
