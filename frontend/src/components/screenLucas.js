@@ -1,9 +1,14 @@
+import { BsStarHalf } from "react-icons/bs";
+
 function screenLucas() {
   
   const stars  = Array(5).fill(0);
   
   return (
     <>
+      <header id="game-background">
+
+      </header>
       <section id="Game-Content">
         <div id="Poster">
           <img
@@ -11,7 +16,7 @@ function screenLucas() {
             src="https://i.imgur.com/ucCzKQv.png"
             alt="Game-Image"
           />
-          <h4 className="my-3">Average rating: 4.8</h4>
+          <h4 className="my-3" id="avrgRating">Average rating: 4.8</h4>
           <button
             type="button"
             class="btn btn-primary"
@@ -24,7 +29,7 @@ function screenLucas() {
         </div>
 
         <div id="Game-Informations">
-          <div class="HeadDescreption">
+          <div class="HeadDescription">
             <h2 id="Game-Name">Celeste</h2>
             <h5>Year: 2018</h5>
             <h5>Created by: Maddy Torson</h5>
@@ -63,7 +68,7 @@ function screenLucas() {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title text-dark" id="exampleModalLabel">
-                Give it your Drop!
+                Give it a Drop!
               </h5>
               <button
                 type="button"
@@ -74,17 +79,7 @@ function screenLucas() {
             </div>
             <div class="modal-body">
               <form>
-                
-                <input type="radio" name="star" class="star"/>
-                <input type="radio" name="star" class="star"/>
-                <input type="radio" name="star" class="star"/>
-                <input type="radio" name="star" class="star"/>
-                <input type="radio" name="star" class="star"/>
-                <input type="radio" name="star" class="star"/>
-                <input type="radio" name="star" class="star"/>
-                <input type="radio" name="star" class="star"/>
-                <input type="radio" name="star" class="star"/>
-                <input type="radio" name="star" class="star"/>
+              <BsStarHalf size={50}/>
 
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label text-dark">
@@ -145,6 +140,8 @@ function screenLucas() {
             </div>
           </div>
         </div>
+        <hr>
+        </hr>
       </div>
     </>
   );
