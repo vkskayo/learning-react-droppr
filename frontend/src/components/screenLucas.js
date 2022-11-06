@@ -1,14 +1,13 @@
-import { BsStarHalf } from "react-icons/bs";
+import { BsStarFill } from "react-icons/bs";
+import React, { useState } from "react";
 
 function screenLucas() {
-  
-  const stars  = Array(5).fill(0);
-  
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+
   return (
     <>
-      <header id="game-background">
-
-      </header>
+      <header id="game-background"></header>
       <section id="Game-Content">
         <div id="Poster">
           <img
@@ -16,7 +15,9 @@ function screenLucas() {
             src="https://i.imgur.com/ucCzKQv.png"
             alt="Game-Image"
           />
-          <h4 className="my-3" id="avrgRating">Average rating: 4.8</h4>
+          <h4 className="my-3" id="avrgRating">
+            Average rating: 4.8
+          </h4>
           <button
             type="button"
             class="btn btn-primary"
@@ -79,14 +80,35 @@ function screenLucas() {
             </div>
             <div class="modal-body">
               <form>
-              <BsStarHalf size={50}/>
+                <div class="stars">
+                {[...Array(5)].map((star, i) => {
+                  const ratingValue = i + 1;
 
+                  return (
+                    <label>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={ratingValue}
+                        onClick={() => setRating(ratingValue)}
+                      />
+                      <BsStarFill
+                        className="star"
+                        color={ratingValue <= (hover || rating) ? "0077b6" : "e4e5e9"}
+                        size={50}
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(null)}
+                      />
+                      ;
+                    </label>
+                  );
+                })}
+                </div>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label text-dark">
                     Drop:
                   </label>
                   <textarea class="form-control" id="message-text"></textarea>
-
                 </div>
                 <div class="mb-3">
                   <div class="dropdown">
@@ -140,8 +162,7 @@ function screenLucas() {
             </div>
           </div>
         </div>
-        <hr>
-        </hr>
+        <hr></hr>
       </div>
     </>
   );

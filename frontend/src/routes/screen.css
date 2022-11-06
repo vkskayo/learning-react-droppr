@@ -106,6 +106,15 @@ button:hover {
   cursor: pointer;
 }
 
+input[type="radio"] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: 200ms;
+}
+
 @media (max-width: 900px) {
   #Game-Content {
     display: flexbox;
