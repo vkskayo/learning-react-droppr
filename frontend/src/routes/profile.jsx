@@ -5,6 +5,10 @@ import { GiThreeFriends } from "react-icons/gi";
 import { GiNotebook } from "react-icons/gi";
 import { AiFillStar } from "react-icons/ai";
 
+const h4 = {
+  color: "honeydew",
+};
+
 export default function Profile() {
   return (
     <>
@@ -19,17 +23,23 @@ export default function Profile() {
           <div className="d-flex flex-column flex-md-row justify-content-around align-items-center mytable">
             <div className="d-flex flex-column align-items-center my-4">
               <GiThreeFriends className="mb-3" size={40} color="deepskyblue" />
-              <h4 className="">Friends</h4>
+              <h4 style={h4} className="">
+                Friends
+              </h4>
               <p>0 connections</p>
             </div>
             <div className="d-flex flex-column align-items-center my-4">
               <GiNotebook size={40} color="red" className="mb-3" />
-              <h4 className="">Reviews</h4>
+              <h4 style={h4} className="">
+                Reviews
+              </h4>
               <p>0 games</p>
             </div>
             <div className="d-flex flex-column align-items-center my-4">
               <AiFillStar size={40} color="yellow" className="mb-3" />
-              <h4 className="">Rated</h4>
+              <h4 style={h4} className="">
+                Rated
+              </h4>
               <p>0 games</p>
             </div>
           </div>

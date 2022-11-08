@@ -11,6 +11,7 @@ import Settings from "./routes/usersettings";
 import Favorites from "./routes/favorites";
 import Popular from "./routes/popular";
 import NewList from "./routes/newList";
+import Search from "./routes/search";
 
 const rootElement = document.getElementById("root");
 render(
@@ -26,6 +27,7 @@ render(
       <Route path="/reviews/popular" element={<Popular />} />
       <Route path="/reviews/favorites" element={<Favorites />} />
       <Route path="/lists/new" element={<NewList />} />
+      <Route path="search/:name" element={<Search />} />
     </Routes>
   </BrowserRouter>,
   rootElement
