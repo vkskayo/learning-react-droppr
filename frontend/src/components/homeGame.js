@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
-function games({
+function Games({
   background_image,
   myKey,
   title,
@@ -62,4 +62,4 @@ function games({
   );
 }
 
-export default games;
+export default Games;

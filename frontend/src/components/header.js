@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-function header() {
+function Header({ childToParent }) {
   const [search, setSearch] = useState("");
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -88,4 +88,4 @@ function header() {
   );
 }
 
-export default header;
+export default Header;

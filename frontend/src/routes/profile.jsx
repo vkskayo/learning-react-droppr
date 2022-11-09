@@ -9,6 +9,10 @@ const h4 = {
   color: "honeydew",
 };
 
+const table = {
+  backgroundColor: "#2c3440",
+};
+
 export default function Profile() {
   return (
     <>
@@ -20,7 +24,10 @@ export default function Profile() {
             <span className="text-light">Activities</span> (These activities are
             automatically updated)
           </p>
-          <div className="d-flex flex-column flex-md-row justify-content-around align-items-center mytable">
+          <div
+            style={table}
+            className="d-flex flex-column flex-md-row justify-content-around align-items-center"
+          >
             <div className="d-flex flex-column align-items-center my-4">
               <GiThreeFriends className="mb-3" size={40} color="deepskyblue" />
               <h4 style={h4} className="">

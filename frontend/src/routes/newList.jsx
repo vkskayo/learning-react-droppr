@@ -6,7 +6,7 @@ export default function newList() {
       <Header />
 
       <div className="d-flex flex-column col-9 mx-auto my-5">
-        <h3 className="bg-secondary p-2 m-0">Create new List</h3>
+        <h3 className="bg-secondary p-2 mb-0">Create new List</h3>
         <form className="bg-dark p-5">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">
@@ -40,7 +40,7 @@ export default function newList() {
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-              <option selected>Escolha um jogo...</option>
+              <option selected>Choose a game...</option>
               <option value="1">The Last Of Us</option>
               <option value="2">Resident Evil 4</option>
               <option value="3">Pou</option>
@@ -49,7 +49,7 @@ export default function newList() {
               class="btn btn-outline-secondary btn-primary btn-outline-light"
               type="button"
             >
-              Adicionar
+              Add
             </button>
           </div>
           <button type="submit" class="btn btn-primary">

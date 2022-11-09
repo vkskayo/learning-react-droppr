@@ -1,7 +1,8 @@
 import { BsStarFill } from "react-icons/bs";
+import { BsFillDropletFill } from "react-icons/bs";
 import React, { useState } from "react";
 
-function screenLucas({
+function ScreenLucas({
   myCover,
   myDate,
   myCreator,
@@ -17,19 +18,26 @@ function screenLucas({
     height: 374,
   };
   let url = myCover.replace("t_thumb", "t_cover_big");
+  let finalImage = "https:" + myScreenshot;
+  let finalImage2 = finalImage.replace("t_thumb", "t_screenshot_big");
 
   // If there is no image, render the nocover image.
   if (url === "https:") {
     url = "https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png";
   }
-  let finalImage = "https:" + myScreenshot;
-  let finalImage2 = finalImage.replace("t_thumb", "t_screenshot_big");
+  //If there is no screenshot image.
+  if (finalImage2 === "https:") {
+  }
 
   const back = {
     backgroundImage: `url(${finalImage2})`,
     width: "100%",
     height: 374,
     opacity: 0.4,
+
+    /*     backgroundSize: "100%",
+    backgroundRepeat: "no-repeat",
+    backgroundPositionY: "center", */
   };
 
   return (
@@ -177,4 +185,4 @@ function screenLucas({
   );
 }
 
-export default screenLucas;
+export default ScreenLucas;

@@ -117,10 +117,6 @@ input[type="radio"] {
   transition: 200ms;
 }
 
-.mytable {
-  background-color: #2c3440;
-}
-
 @media (max-width: 900px) {
   #Game-Content {
     display: flexbox;

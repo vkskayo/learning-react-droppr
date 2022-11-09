@@ -14,9 +14,17 @@ export default function App() {
     );
   }, [page]);
 
+  const childToParent = (childData) => {
+    fetch(`http://localhost:3001/api/query/${childData}/${0}`).then((res) =>
+      res.json().then((data) => {
+        setGamesList(data.data);
+      })
+    );
+  };
+
   return (
     <>
-      <Header />
+      <Header childToParent={childToParent} />
       <ul>
         {gamesList.map((e) => {
           return (
