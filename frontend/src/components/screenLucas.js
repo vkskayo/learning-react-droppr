@@ -14,6 +14,7 @@ function ScreenLucas({
   const [hover, setHover] = useState(null);
   const [text_review, setTextReview] = useState("");
   const [game_id, setGame_id] = useState(useParams().id);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -44,6 +45,36 @@ function ScreenLucas({
     /*     backgroundSize: "100%",
     backgroundRepeat: "no-repeat",
     backgroundPositionY: "center", */
+  };
+
+  const customHeaders = {
+    "Content-Type": "application/json",
+  };
+
+  let handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let res = await fetch("http://localhost:3001/review/new", {
+        method: "POST",
+        headers: customHeaders,
+        body: JSON.stringify({
+          text_review: text_review,
+          game_id: game_id,
+          rating: rating,
+        }),
+      });
+
+      let resJson = await res.json();
+      if (res.status === 200) {
+        setTextReview("");
+        setRating(null);
+        setMessage("Review created successfully");
+      } else {
+        setMessage("Some error occured");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -99,7 +130,7 @@ function ScreenLucas({
               ></button>
             </div>
             <div class="modal-body">
-              <form action="http://localhost:3001/review/new" method="POST">
+              <form onSubmit={handleSubmit}>
                 <div class="stars">
                   {[...Array(5)].map((star, i) => {
                     const ratingValue = i + 1;
@@ -108,7 +139,6 @@ function ScreenLucas({
                       <label>
                         <input
                           type="radio"
-                          name="rating"
                           value={ratingValue}
                           onClick={() => setRating(ratingValue)}
                         />
@@ -133,13 +163,13 @@ function ScreenLucas({
                     Drop:
                   </label>
                   <textarea
+                    name="text_review"
                     value={text_review}
                     onChange={(e) => setTextReview(e.target.value)}
-                    name="text_review"
                     class="form-control"
                     id="message-text"
                   ></textarea>
-                  <input name="game_id" value={game_id} type="hidden" />
+                  <input value={game_id} type="hidden" />
                 </div>
                 <div class="mb-3">
                   <div class="dropdown">
@@ -183,6 +213,10 @@ function ScreenLucas({
               </form>
             </div>
             <div class="modal-footer">
+              {message ? (
+                <p className="text-success mx-auto">{message}</p>
+              ) : null}
+
               <button
                 type="button"
                 class="btn btn-secondary"

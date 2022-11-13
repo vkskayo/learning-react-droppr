@@ -62,7 +62,7 @@ app.post("/review/new", (req, res) => {
   }
   run().catch(console.dir);
 
-  console.log("Hello");
+  console.log(req.body);
   res.send(req.body);
 });
 
