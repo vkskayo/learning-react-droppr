@@ -1,6 +1,6 @@
 import { BsStarFill } from "react-icons/bs";
-import { BsFillDropletFill } from "react-icons/bs";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function ScreenLucas({
   myCover,
@@ -12,6 +12,12 @@ function ScreenLucas({
 }) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+  const [text_review, setTextReview] = useState("");
+  const [game_id, setGame_id] = useState(useParams().id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const imgStyle = {
     width: 249,
@@ -93,7 +99,7 @@ function ScreenLucas({
               ></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="http://localhost:3001/review/new" method="POST">
                 <div class="stars">
                   {[...Array(5)].map((star, i) => {
                     const ratingValue = i + 1;
@@ -126,7 +132,14 @@ function ScreenLucas({
                   <label for="message-text" class="col-form-label text-dark">
                     Drop:
                   </label>
-                  <textarea class="form-control" id="message-text"></textarea>
+                  <textarea
+                    value={text_review}
+                    onChange={(e) => setTextReview(e.target.value)}
+                    name="text_review"
+                    class="form-control"
+                    id="message-text"
+                  ></textarea>
+                  <input name="game_id" value={game_id} type="hidden" />
                 </div>
                 <div class="mb-3">
                   <div class="dropdown">
@@ -145,25 +158,28 @@ function ScreenLucas({
                       aria-labelledby="dropdownMenuButton1"
                     >
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <p class="dropdown-item" href="#">
                           Playing
-                        </a>
+                        </p>
                       </li>
 
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <p class="dropdown-item" href="#">
                           Finished
-                        </a>
+                        </p>
                       </li>
 
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <p class="dropdown-item" href="#">
                           All achievements
-                        </a>
+                        </p>
                       </li>
                     </ul>
                   </div>
                 </div>
+                <button type="submit" class="btn btn-primary">
+                  Send message
+                </button>
               </form>
             </div>
             <div class="modal-footer">
@@ -174,9 +190,9 @@ function ScreenLucas({
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary">
+              {/*     <button type="submit" class="btn btn-primary">
                 Send message
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

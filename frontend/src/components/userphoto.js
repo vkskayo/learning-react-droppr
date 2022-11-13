@@ -6,7 +6,7 @@ export default function userPhoto() {
       <div>
         <div className="col-4 d-flex flex-column mx-2">
           <div className="d-flex align-items-center gap-3 col-12 col-lg-5">
-            <img className="rounded-circle w-50" src={image} />
+            <img alt="userPhoto" className="rounded-circle w-50" src={image} />
             <h4 className="fs-5 fs-md-4">Username</h4>
           </div>
         </div>

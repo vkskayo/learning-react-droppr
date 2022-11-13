@@ -2,17 +2,69 @@ const axios = require("axios");
 const express = require("express");
 const app = express();
 const http = require("http");
+const { MongoClient } = require("mongodb");
 const cors = require("cors");
+var bodyParser = require("body-parser");
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.set("port", 3001);
+const port = 3001;
+
+app.set("port", port);
 const server = http.createServer(app);
 
-app.listen(3001, () => {
-  console.log("server running 3001");
+app.listen(port, () => {
+  console.log(`server running on port ${port}`);
 });
 
+const uri =
+  "mongodb+srv://droppradmin:mtVnIizYYoGOghoE@cluster0.sh88dvn.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri);
+
 // Given the game id, this endpoint returns the release date of the game
+
+app.post("/lists/new", (req, res) => {
+  async function run() {
+    try {
+      await client.connect();
+      // database and collection code goes here
+      const db = client.db("Droppr");
+      const coll = db.collection("game_lists");
+      // insert code goes here
+      const docs = [req.body];
+      /*  const result = await coll.insertMany(docs); */
+      // display the results of your operation
+    } finally {
+      // Ensures that the client will close when you finish/error
+      await client.close();
+    }
+  }
+  run().catch(console.dir);
+  res.send(req.body);
+});
+
+app.post("/review/new", (req, res) => {
+  async function run() {
+    try {
+      await client.connect();
+      // database and collection code goes here
+      const db = client.db("Droppr");
+      const coll = db.collection("reviews");
+      // insert code goes here
+      const docs = [req.body];
+      const result = await coll.insertMany(docs);
+      // display the results of your operation
+    } finally {
+      // Ensures that the client will close when you finish/error
+      await client.close();
+    }
+  }
+  run().catch(console.dir);
+
+  console.log("Hello");
+  res.send(req.body);
+});
 
 app.get("/api/date/:id", (req, res) => {
   axios({

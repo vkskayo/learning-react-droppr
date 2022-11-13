@@ -13,7 +13,7 @@ export default function Search() {
         setGamesList(data.data);
       })
     );
-  }, [page, useParams().name]);
+  }, [page, name]);
 
   return (
     <>

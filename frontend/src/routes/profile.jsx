@@ -52,7 +52,7 @@ export default function Profile() {
           </div>
         </div>
         <div className="d-flex flex-column flex-md-row gap-3 align-items-center">
-          <img className="rounded-circle" src={image} />
+          <img alt="profile" className="rounded-circle" src={image} />
           <div className="d-flex flex-column align-items-center align-items-md-start">
             <h1 className="text-light">Username</h1>
             <Link className="position-relative inline-block" to="settings">

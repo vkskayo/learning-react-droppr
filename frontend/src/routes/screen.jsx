@@ -39,7 +39,7 @@ export default function Screen() {
     fetch(`http://localhost:3001/api/screenshot/${id}`)
       .then((res) => res.json())
       .then((data) => setScreenshot(data.data[0].url));
-  }, []);
+  });
   return (
     <>
       <Header />

@@ -9,15 +9,12 @@ function Games({
   genres,
   platforms,
 }) {
-  const url =
-    "https://images.igdb.com/igdb/image/upload/t_cover_big/dq7tvq2dub1xj0jnqafe.jpg";
   const imgStyle = {
     width: 180,
     height: 240,
   };
 
   const [cover, setCover] = useState("");
-  const [genress, setGenres] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:3001/api/capa/${background_image}`)
@@ -33,7 +30,7 @@ function Games({
           "https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png"
         );
       });
-  }, []);
+  });
 
   return (
     <div className="d-flex col-12 my-5 flex-column-reverse justify-content flex-md-row">

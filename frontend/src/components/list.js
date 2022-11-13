@@ -1,21 +1,14 @@
 import { BsFillTrashFill } from "react-icons/bs";
-import { AiFillEdit } from "react-icons/ai";
+import { BsPencilFill } from "react-icons/bs";
 
 export default function list() {
-  /*   let first = {
-    left: "10px",
-    position: "absolute",
+  const handleDeleteButton = () => {
+    alert("Are you sure you want to delete this list?");
   };
 
-  let second = {
-    left: "50px",
-    position: "absolute",
+  const btnb = {
+    backgroundColor: "white",
   };
-
-  let third = {
-    left: "90px",
-    position: "absolute",
-  }; */
 
   return (
     <div className="my-5 mx-3">
@@ -34,26 +27,17 @@ export default function list() {
             src="https://images.igdb.com/igdb/image/upload/t_cover_small/nocover.png"
           />
         </div>
-        {/*        <div className="hover-effect position-relative">
-          <img
-            style={first}
-            src="https://images.igdb.com/igdb/image/upload/t_cover_small/nocover.png"
-          />
-          <img
-            style={second}
-            src="https://images.igdb.com/igdb/image/upload/t_cover_small/nocover.png"
-          />
-          <img
-            style={third}
-            src="https://images.igdb.com/igdb/image/upload/t_cover_small/nocover.png"
-          />
-        </div> */}
 
         <div className="mx-2">
           <h2 className="text-light fs-3">List Name</h2>
-
-          <BsFillTrashFill color="lightgrey" size={20} />
-          <AiFillEdit className="mx-2" color="lightgrey" size={20} />
+          <div className="d-flex gap-2">
+            <button onClick={handleDeleteButton} style={btnb}>
+              <BsFillTrashFill color="black" size={20} />
+            </button>
+            <button style={btnb}>
+              <BsPencilFill color="black" size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
