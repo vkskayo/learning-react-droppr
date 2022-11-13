@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { GiThreeFriends } from "react-icons/gi";
 import { GiNotebook } from "react-icons/gi";
 import { AiFillStar } from "react-icons/ai";
+import { useState, useEffect } from "react";
 
 const h4 = {
   color: "honeydew",
@@ -14,6 +15,13 @@ const table = {
 };
 
 export default function Profile() {
+  const [numReview, setnumReviews] = useState(0);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/getreview`)
+      .then((res) => res.json())
+      .then((data) => setnumReviews(data.data.length));
+  }, [numReview]);
   return (
     <>
       <Header />
@@ -40,7 +48,7 @@ export default function Profile() {
               <h4 style={h4} className="">
                 Reviews
               </h4>
-              <p>0 games</p>
+              <p>{numReview} games</p>
             </div>
             <div className="d-flex flex-column align-items-center my-4">
               <AiFillStar size={40} color="yellow" className="mb-3" />

@@ -1,8 +1,17 @@
 import Header from "../components/header";
 import Review from "../components/review";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Reviews() {
+  const [reviewList, setReviewList] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/getreview`)
+      .then((res) => res.json())
+      .then((data) => setReviewList(data.data));
+  }, []);
+
   return (
     <>
       <Header />
@@ -22,8 +31,15 @@ export default function Reviews() {
           </Link>
         </div>
       </div>
-      <Review numOfstars={4} />
-      <Review numOfstars={3} />
+      {reviewList.map((e) => {
+        return (
+          <Review
+            numOfstars={e.rating}
+            game_id={e.game_id}
+            text_review={e.text_review}
+          />
+        );
+      })}
     </>
   );
 }

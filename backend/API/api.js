@@ -22,7 +22,31 @@ const uri =
   "mongodb+srv://droppradmin:mtVnIizYYoGOghoE@cluster0.sh88dvn.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
-// Given the game id, this endpoint returns the release date of the game
+app.get("/getreview", (req, res) => {
+  const review = [];
+  async function run() {
+    try {
+      await client.connect();
+      // database and collection code goes here
+      const db = client.db("Droppr");
+      const coll = db.collection("reviews");
+      // find code goes here
+      const cursor = coll.find();
+      // iterate code goes here
+      await cursor.forEach((e) => {
+        review.push(e);
+      });
+
+      res.status(200).json({
+        data: review,
+      });
+    } finally {
+      // Ensures that the client will close when you finish/error
+      await client.close();
+    }
+  }
+  run().catch(console.dir);
+});
 
 app.post("/lists/new", (req, res) => {
   async function run() {
@@ -75,7 +99,7 @@ app.get("/api/date/:id", (req, res) => {
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
       Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
     },
-    data: `fields human; where game=${req.params.id};`,
+    data: `fields human,y; where game=${req.params.id};`,
   })
     .then((response) => {
       res.json({ data: response.data });
