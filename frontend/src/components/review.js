@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Review({ numOfstars, text_review, game_id }) {
+export default function Review({ numOfstars, text_review, game_id, date }) {
   let stars = [];
   for (let i = 0; i < numOfstars; i++) {
     stars.push(<i class="fa-solid fa-star text-warning"></i>);
@@ -11,9 +11,11 @@ export default function Review({ numOfstars, text_review, game_id }) {
     height: "120px",
   };
 
-  const [coverReview, setCoverReview] = useState("");
-  const [titleReview, setTitleReview] = useState("");
-  const [yearRelease, setYearRelease] = useState("");
+  const [coverReview, setCoverReview] = useState(
+    "https://images.igdb.com/igdb/image/upload/t_cover_small/nocover.png"
+  );
+  const [titleReview, setTitleReview] = useState("Title");
+  const [yearRelease, setYearRelease] = useState("Unknown");
 
   useEffect(() => {
     fetch(`http://localhost:3001/api/cover/${game_id}`)
@@ -22,14 +24,17 @@ export default function Review({ numOfstars, text_review, game_id }) {
         setCoverReview(
           "https:" + data.data[0].url.replace("t_thumb", "t_cover_small")
         )
-      );
+      )
+      .catch((error) => console.log(error));
     fetch(`http://localhost:3001/api/date/${game_id}`)
       .then((res) => res.json())
-      .then((data) => setYearRelease(data.data[0].y));
+      .then((data) => setYearRelease(data.data[0].y))
+      .catch((error) => console.log(error));
 
     fetch(`http://localhost:3001/api/general/${game_id}`)
       .then((res) => res.json())
-      .then((data) => setTitleReview(data.data[0].name));
+      .then((data) => setTitleReview(data.data[0].name))
+      .catch((error) => console.log(error));
   }, [game_id]);
 
   return (
@@ -52,9 +57,7 @@ export default function Review({ numOfstars, text_review, game_id }) {
                 return e;
               })}
             </div>
-            <p className="text-secondary d-none d-md-inline">
-              Uploaded 22 may 2020
-            </p>
+            <p className="text-secondary d-none d-md-inline">Uploaded {date}</p>
           </div>
           <p className="text-secondary d-md-none">Uploaded 22 may 2020</p>
           <p className="text-light d-none d-md-inline">{text_review}</p>

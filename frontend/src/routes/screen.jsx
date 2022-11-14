@@ -12,6 +12,7 @@ export default function Screen() {
   const [date, setDate] = useState([]);
   const [description, setDescription] = useState("");
   const [screenshot, setScreenshot] = useState("");
+  const [ratingAvg, setRatingAvg] = useState(0);
 
   const id = useParams().id;
   useEffect(() => {
@@ -19,26 +20,32 @@ export default function Screen() {
       .then((res) => res.json())
       .then((data) => {
         setCover(data.data[0].url);
-      });
+      })
+      .catch((error) => console.log(error));
 
     fetch(`http://localhost:3001/api/general/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.data[0].name);
         setDescription(data.data[0].summary);
-      });
+        setRatingAvg(data.data[0].rating);
+      })
+      .catch((error) => console.log(error));
 
     fetch(`http://localhost:3001/api/creator/${id}`)
       .then((res) => res.json())
-      .then((data) => setCreator(data.data[0].name));
+      .then((data) => setCreator(data.data[0].name))
+      .catch((error) => console.log(error));
 
     fetch(`http://localhost:3001/api/date/${id}`)
       .then((res) => res.json())
-      .then((data) => setDate(data.data[0].human));
+      .then((data) => setDate(data.data[0].human))
+      .catch((error) => console.log(error));
 
     fetch(`http://localhost:3001/api/screenshot/${id}`)
       .then((res) => res.json())
-      .then((data) => setScreenshot(data.data[0].url));
+      .then((data) => setScreenshot(data.data[0].url))
+      .catch((error) => console.log(error));
   });
   return (
     <>
@@ -50,6 +57,7 @@ export default function Screen() {
         myTitle={title}
         myDescription={description}
         myScreenshot={screenshot}
+        myRatingAvg={ratingAvg}
       />
       <hr></hr>
       <Review numOfstars={4} />

@@ -22,6 +22,8 @@ const uri =
   "mongodb+srv://droppradmin:mtVnIizYYoGOghoE@cluster0.sh88dvn.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
+const accessToken = "Bearer ijh5gvzwv8ntxnvxyyijh39kor858t";
+
 app.get("/getreview", (req, res) => {
   const review = [];
   async function run() {
@@ -97,7 +99,7 @@ app.get("/api/date/:id", (req, res) => {
     headers: {
       Accept: "application/json",
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+      Authorization: accessToken,
     },
     data: `fields human,y; where game=${req.params.id};`,
   })
@@ -121,7 +123,7 @@ app.get("/api/creator/:id", (req, res) => {
     headers: {
       Accept: "application/json",
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+      Authorization: accessToken,
     },
     data: `fields name; where developed=${req.params.id};`,
   })
@@ -143,9 +145,9 @@ app.get("/api/general/:id", (req, res) => {
     headers: {
       Accept: "application/json",
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+      Authorization: accessToken,
     },
-    data: `fields name, summary, platforms, genres, category; where id=${req.params.id};`,
+    data: `fields rating, name, summary, platforms, genres, category; where id=${req.params.id};`,
   })
     .then((response) => {
       res.json({ data: response.data });
@@ -165,7 +167,7 @@ app.get("/api/cover/:id", (req, res) => {
     headers: {
       Accept: "application/json",
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+      Authorization: accessToken,
     },
     data: `fields url; where game=${req.params.id};`,
   })
@@ -186,7 +188,7 @@ app.get("/api/capa/:id", (req, res) => {
     headers: {
       Accept: "application/json",
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+      Authorization: accessToken,
     },
     data: `fields url; where id=${req.params.id};`,
   })
@@ -206,7 +208,7 @@ app.get("/api/screenshot/:id", (req, res) => {
     headers: {
       Accept: "application/json",
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+      Authorization: accessToken,
     },
     data: `fields url, game; where game=${req.params.id};`,
   })
@@ -228,7 +230,7 @@ app.get("/api/list/:id", (req, res) => {
     headers: {
       Accept: "application/json",
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+      Authorization: accessToken,
     },
     data: `fields name, summary, platforms, genres, category, cover; limit 15; offset ${
       req.params.id * 15
@@ -250,10 +252,32 @@ app.get("/api/query/:name/:id", (req, res) => {
     headers: {
       Accept: "application/json",
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
-      Authorization: "Bearer cmxxg3b8bfix8e02htwn8pq8tzlx8e",
+      Authorization: accessToken,
     },
     data: `search "${req.params.name}"; fields name,cover; limit 15; offset ${
       req.params.id * 15
+    };`,
+  })
+    .then((response) => {
+      res.json({ data: response.data });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.send("Error");
+    });
+});
+
+app.get("/api/count/:name", (req, res) => {
+  axios({
+    url: "https://api.igdb.com/v4/multiquery",
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
+      Authorization: accessToken,
+    },
+    data: `query games/count "Count of games" {
+      search"${req.params.name}";
     };`,
   })
     .then((response) => {

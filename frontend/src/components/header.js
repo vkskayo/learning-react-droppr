@@ -59,7 +59,7 @@ function Header({ childToParent }) {
               }}
               class="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Search a game"
               aria-label="Search"
               onKeyDown={(event) => {
                 if (event.key === "Enter") {

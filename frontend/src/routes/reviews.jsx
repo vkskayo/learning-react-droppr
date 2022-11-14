@@ -37,6 +37,7 @@ export default function Reviews() {
             numOfstars={e.rating}
             game_id={e.game_id}
             text_review={e.text_review}
+            date={e.date}
           />
         );
       })}

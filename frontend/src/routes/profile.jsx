@@ -5,6 +5,7 @@ import { GiThreeFriends } from "react-icons/gi";
 import { GiNotebook } from "react-icons/gi";
 import { AiFillStar } from "react-icons/ai";
 import { useState, useEffect } from "react";
+import Footer from "../components/footer";
 
 const h4 = {
   color: "honeydew",
@@ -26,7 +27,7 @@ export default function Profile() {
     <>
       <Header />
 
-      <div className="my-5 d-flex flex-column-reverse flex-md-row col-8 col-md-8 mx-auto justify-content-around align-items-center gap-3">
+      <div className="my-5 d-flex flex-column-reverse flex-md-row col-8 col-md-8 mx-auto justify-content-around align-items-start gap-3">
         <div className="bg-secondary col-12 col-md-6 my-4">
           <p className="text-white-50 text-center my-1 p-1">
             <span className="text-light">Activities</span> (These activities are
@@ -80,7 +81,7 @@ export default function Profile() {
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil fugit,
           harum fuga tempore odit quod temporibus voluptas assumenda,
           perferendis dicta vitae sint, iste quibusdam totam vero rerum
-          necessitatibus ab soluta?
+          necessitatibus ab soluta? Lorem, ipsum dolor sit amet consectetur
         </p>
       </div>
     </>

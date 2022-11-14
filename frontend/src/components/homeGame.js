@@ -10,11 +10,13 @@ function Games({
   platforms,
 }) {
   const imgStyle = {
-    width: 180,
-    height: 240,
+    width: 135,
+    height: 180,
   };
 
-  const [cover, setCover] = useState("");
+  const [cover, setCover] = useState(
+    "https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png"
+  );
 
   useEffect(() => {
     fetch(`http://localhost:3001/api/capa/${background_image}`)
@@ -26,9 +28,7 @@ function Games({
         })
       )
       .catch((err) => {
-        setCover(
-          "https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png"
-        );
+        console.log(err);
       });
   });
 
@@ -46,7 +46,7 @@ function Games({
         />
       </Link>
       <div className="">
-        <h1 className="text-light">{title}</h1>
+        <h2 className="text-light">{title}</h2>
         <h5 className="text-primary">Nintendo / IOS</h5>
         <div className="p-1 bg-secondary rounded mt-3 d-inline-block fw-bold text-light fs-6">
           Main Game

@@ -9,11 +9,12 @@ function ScreenLucas({
   myTitle,
   myDescription,
   myScreenshot,
+  myRatingAvg,
 }) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [text_review, setTextReview] = useState("");
-  const [game_id, setGame_id] = useState(useParams().id);
+
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -50,8 +51,9 @@ function ScreenLucas({
   const customHeaders = {
     "Content-Type": "application/json",
   };
+  const game_id = useParams().id;
 
-  let handleSubmit = async (e) => {
+  let HandleSubmit = async (e) => {
     e.preventDefault();
     try {
       let res = await fetch("http://localhost:3001/review/new", {
@@ -61,10 +63,10 @@ function ScreenLucas({
           text_review: text_review,
           game_id: game_id,
           rating: rating,
+          date: new Date().toLocaleDateString("pt-BR"),
         }),
       });
 
-      let resJson = await res.json();
       if (res.status === 200) {
         setTextReview("");
         setRating(null);
@@ -84,7 +86,10 @@ function ScreenLucas({
         <div id="Poster">
           <img style={imgStyle} src={url} alt="Girl in a jacket" />
           <h4 className="my-3" id="avrgRating">
-            Average rating: 4.8
+            Average rating:{" "}
+            <span className="text-warning">{` ${Math.round(
+              myRatingAvg
+            )} / 100`}</span>
           </h4>
           <button
             type="button"
@@ -130,7 +135,7 @@ function ScreenLucas({
               ></button>
             </div>
             <div class="modal-body">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={HandleSubmit}>
                 <div class="stars">
                   {[...Array(5)].map((star, i) => {
                     const ratingValue = i + 1;
@@ -169,7 +174,7 @@ function ScreenLucas({
                     class="form-control"
                     id="message-text"
                   ></textarea>
-                  <input value={game_id} type="hidden" />
+                  <input value={useParams().id} type="hidden" />
                 </div>
                 <div class="mb-3">
                   <div class="dropdown">
