@@ -20,7 +20,7 @@ h2 {
 body {
   width: 100%;
   overflow-x: hidden;
-  background-color: #363945;
+  /*  background-color: #363945; */
   color: snow;
   font-family: Tahoma;
 }

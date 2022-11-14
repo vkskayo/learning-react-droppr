@@ -5,7 +5,6 @@ import { GiThreeFriends } from "react-icons/gi";
 import { GiNotebook } from "react-icons/gi";
 import { AiFillStar } from "react-icons/ai";
 import { useState, useEffect } from "react";
-import Footer from "../components/footer";
 
 const h4 = {
   color: "honeydew",
@@ -54,13 +53,13 @@ export default function Profile() {
             <div className="d-flex flex-column align-items-center my-4">
               <AiFillStar size={40} color="yellow" className="mb-3" />
               <h4 style={h4} className="">
-                Rated
+                Favorited
               </h4>
               <p>0 games</p>
             </div>
           </div>
         </div>
-        <div className="d-flex flex-column flex-md-row gap-3 align-items-center">
+        <div className="d-flex flex-column flex-md-row gap-3 align-items-center mx-auto">
           <img alt="profile" className="rounded-circle" src={image} />
           <div className="d-flex flex-column align-items-center align-items-md-start">
             <h1 className="text-light">Username</h1>

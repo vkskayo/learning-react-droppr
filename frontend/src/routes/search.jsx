@@ -8,7 +8,6 @@ export default function Search() {
 
   const [gamesList, setGamesList] = useState([]);
   const [page, setPage] = useState(0);
-  const [displayNext, setDisplayNext] = useState(true);
   const [gameCount, setGameCount] = useState(0);
   const [pageCount, setPageCount] = useState(0);
 
@@ -36,7 +35,9 @@ export default function Search() {
       <h5 className="mt-5 mx-5 text-secondary">
         Encontrado {gameCount} jogos para sua busca:{" "}
       </h5>
-      <h5 className=" mx-5 text-secondary">Numero de paginas = {pageCount};</h5>
+      <h5 className=" mx-5 text-secondary">
+        Numero de paginas = {pageCount + 1};
+      </h5>
       <ul>
         {gamesList.map((e) => {
           return (

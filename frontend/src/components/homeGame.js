@@ -14,6 +14,10 @@ function Games({
     height: 180,
   };
 
+  const cardStyle = {
+    backgroundColor: "#363945",
+  };
+
   const [cover, setCover] = useState(
     "https://images.igdb.com/igdb/image/upload/t_cover_big/nocover.png"
   );
@@ -33,27 +37,27 @@ function Games({
   });
 
   return (
-    <div className="d-flex col-12 my-5 flex-column-reverse justify-content flex-md-row">
+    <div
+      style={cardStyle}
+      className="d-flex pb-4 pb-md-0 col-8 my-5 flex-column-reverse justify-content flex-md-row position-relative rounded mx-auto mx-md-5"
+    >
       <Link
-        className="position-relative inline-block mx-md-4"
+        className=" inline-block me-md-4 mx-auto mx-md-0"
         to={`/screen/${myKey}`}
       >
         <img
           style={imgStyle}
           src={cover}
-          className="img-fluid hover-effect"
+          className="img-fluid hover-effect rounded"
           alt="..."
         />
       </Link>
-      <div className="">
-        <h2 className="text-light">{title}</h2>
-        <h5 className="text-primary">Nintendo / IOS</h5>
-        <div className="p-1 bg-secondary rounded mt-3 d-inline-block fw-bold text-light fs-6">
+      <div className="mx-auto mx-md-0 d-flex d-md-block flex-column align-items-center">
+        <h2 className="text-light mt-md-2 fs-3 fs-md-2 m-4 m-md-0">{title}</h2>
+
+        <h5 className="p-1 bg-secondary rounded mt-3 d-inline-block fw-bold text-light fs-6 mb-4 text-center">
           Main Game
-        </div>
-        <p className="mt-3 text-warning">
-          <span className="text-light">Genre: </span>Shooter
-        </p>
+        </h5>
       </div>
     </div>
   );
