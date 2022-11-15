@@ -1,7 +1,5 @@
 import Header from "../components/header";
 
-import "./usersettings.css";
-
 export default function Screen() {
   return (
     <>

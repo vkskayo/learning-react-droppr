@@ -9,7 +9,8 @@ export default function Reviews() {
   useEffect(() => {
     fetch(`http://localhost:3001/getreview`)
       .then((res) => res.json())
-      .then((data) => setReviewList(data.data));
+      .then((data) => setReviewList(data.data))
+      .catch((error) => console.log(error));
   }, []);
 
   return (

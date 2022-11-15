@@ -232,7 +232,7 @@ app.get("/api/list/:id", (req, res) => {
       "Client-ID": "dnz1zvhqgyb7pwacm85eu171egtel1",
       Authorization: accessToken,
     },
-    data: `fields name, summary, platforms, genres, category, cover; limit 15; offset ${
+    data: `fields name, summary, platforms, genres, category, cover; limit 5; offset ${
       req.params.id * 15
     };`,
   })

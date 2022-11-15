@@ -9,6 +9,7 @@ export default function App() {
   const [gamesList, setGamesList] = useState([]);
   const [page, setPage] = useState(0);
   const [display, setDisplay] = useState(false);
+  const [last5Reviews, setLast5Reviews] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:3001/api/list/${page}`).then((res) =>
@@ -17,19 +18,24 @@ export default function App() {
         setDisplay(true);
       })
     );
+    fetch(`http://localhost:3001/getreview`)
+      .then((res) => res.json())
+      .then((data) => setLast5Reviews(data.data.slice(-5)))
+      .catch((error) => console.log(error));
   }, [page]);
 
-  const childToParent = (childData) => {
+  //Just testing running functions through child components
+  /*  const childToParent = (childData) => {
     fetch(`http://localhost:3001/api/query/${childData}/${0}`).then((res) =>
       res.json().then((data) => {
         setGamesList(data.data);
       })
     );
-  };
+  }; */
 
   return (
     <>
-      <Header childToParent={childToParent} />
+      <Header /* childToParent={childToParent} */ />
       <div className="d-flex flex-md-row flex-column-reverse">
         <div className="col-lg-7">
           <ul className="m-0 p-0">
@@ -83,14 +89,22 @@ export default function App() {
           <BsFillDropletFill color="deepskyblue" size={50} />
           <div className="my-5">
             <div className="mx-auto border-bottom border-secondary">
-              <p className="text-secondary fs-6">
-                Recent reviews (last 30 days)
+              <p className="text-secondary fs-6 text-center text-md-start">
+                Recent reviews (last 5 reviews)
               </p>
             </div>
-            <div className="d-flex flex-column">
-              <Review />
-              <Review />
-            </div>
+            <ul className="d-flex flex-column-reverse">
+              {last5Reviews.map((e) => {
+                return (
+                  <Review
+                    numOfstars={e.rating}
+                    game_id={e.game_id}
+                    date={e.date}
+                    checkOut={true}
+                  />
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>

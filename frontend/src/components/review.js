@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function Review({ numOfstars, text_review, game_id, date }) {
+export default function Review({
+  numOfstars,
+  text_review,
+  game_id,
+  date,
+  checkOut,
+}) {
   let stars = [];
   for (let i = 0; i < numOfstars; i++) {
     stars.push(<i class="fa-solid fa-star text-warning"></i>);
@@ -64,6 +71,11 @@ export default function Review({ numOfstars, text_review, game_id, date }) {
         </div>
       </div>
       <p className="d-inline d-md-none text-light">{text_review}</p>
+      {checkOut ? (
+        <Link to={`/screen/${game_id}`}>
+          <button className="bg-primary text-light w-25">Check it Out</button>
+        </Link>
+      ) : null}
     </div>
   );
 }
