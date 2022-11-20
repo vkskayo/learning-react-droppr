@@ -12,23 +12,26 @@ import Favorites from "./routes/favorites";
 import Popular from "./routes/popular";
 import NewList from "./routes/newList";
 import Search from "./routes/search";
+import { RecoilRoot } from "recoil";
 
 const rootElement = document.getElementById("root");
 render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="profile" element={<Profile />} />
-      <Route path="friends" element={<Friends />} />
-      <Route path="reviews" element={<Reviews />} />
-      <Route path="lists" element={<Lists />} />
-      <Route path="screen/:id" element={<Screen />} />
-      <Route path="/profile/settings" element={<Settings />} />
-      <Route path="/reviews/popular" element={<Popular />} />
-      <Route path="/reviews/favorites" element={<Favorites />} />
-      <Route path="/lists/new" element={<NewList />} />
-      <Route path="search/:name" element={<Search />} />
-    </Routes>
-  </BrowserRouter>,
+  <RecoilRoot>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="friends" element={<Friends />} />
+        <Route path="reviews" element={<Reviews />} />
+        <Route path="lists" element={<Lists />} />
+        <Route path="screen/:id" element={<Screen />} />
+        <Route path="/profile/settings" element={<Settings />} />
+        <Route path="/reviews/popular" element={<Popular />} />
+        <Route path="/reviews/favorites" element={<Favorites />} />
+        <Route path="/lists/new" element={<NewList />} />
+        <Route path="search/:name" element={<Search />} />
+      </Routes>
+    </BrowserRouter>
+  </RecoilRoot>,
   rootElement
 );

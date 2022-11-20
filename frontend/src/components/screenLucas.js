@@ -43,9 +43,9 @@ function ScreenLucas({
     height: 374,
     opacity: 0.4,
 
-    /*     backgroundSize: "100%",
+    backgroundSize: "100%",
     backgroundRepeat: "no-repeat",
-    backgroundPositionY: "center", */
+    backgroundPositionY: "center",
   };
 
   const customHeaders = {
@@ -82,7 +82,7 @@ function ScreenLucas({
   return (
     <>
       <header className="mb-3" style={back}></header>
-      <section className="" id="Game-Content">
+      <section id="Game-Content">
         <div id="Poster">
           <img style={imgStyle} src={url} alt="Girl in a jacket" />
           <h4 className="my-3" id="avrgRating">

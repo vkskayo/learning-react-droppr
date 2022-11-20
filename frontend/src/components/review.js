@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { reviewState } from "../atoms/review";
+import { useRecoilState } from "recoil";
+import { BsFillDropletFill } from "react-icons/bs";
 
 export default function Review({
   numOfstars,
@@ -8,9 +11,10 @@ export default function Review({
   date,
   checkOut,
 }) {
+  const [myReview, setMyReview] = useRecoilState(reviewState);
   let stars = [];
   for (let i = 0; i < numOfstars; i++) {
-    stars.push(<i class="fa-solid fa-star text-warning"></i>);
+    stars.push(<BsFillDropletFill color="deepskyblue" />);
   }
 
   const imgDimensions = {

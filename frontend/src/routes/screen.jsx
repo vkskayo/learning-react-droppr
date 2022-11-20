@@ -61,8 +61,8 @@ export default function Screen() {
         myRatingAvg={ratingAvg}
       />
       <hr></hr>
-      <Review numOfstars={4} />
-      <Review numOfstars={3} />
+      <Review />
+      <Review />
     </>
   );
 }
